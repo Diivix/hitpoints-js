@@ -4,7 +4,8 @@ import TalentNode from '../talentnode/TalentNode';
 function TalentTree(props) {
 
   const talentNodes = props.talents.map(t => {
-    return <TalentNode name={t.name} image={t.image}/>
+    const icon = props.activeTalents.includes(t.name) ? t.activeIcon : t.inactiveIcon;
+    return <TalentNode name={t.name} icon={icon}/>
   });
 
   return (
@@ -15,7 +16,9 @@ function TalentTree(props) {
 }
 
 TalentTree.propTypes = {
-  talents: PropTypes.array
+  talents: PropTypes.array,
+  activeTalents: PropTypes.array
+
 }
 
 export default TalentTree;

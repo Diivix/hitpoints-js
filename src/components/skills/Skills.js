@@ -1,29 +1,21 @@
-import Counter from '../counter/Counter'
+import Counter from '../counter/Counter';
 import { Box, Container, Grid, Paper } from '@mui/material';
 import { useState } from 'react';
 import TalentTree from '../talenttree/TalentTree';
-
+import { talents } from '../../consts';
 
 function Skills() {
   const [talentPoints] = useState(6);
+  const [activeTalents] = useState(['chevrons']);
 
-  const talents = [
-    {
-      name: "Chevrons",
-      image: "testimage"
-    },
-    {
-      name: "Silverware",
-      image: "testimage"
-    },
-  ];
+  const talentTreeOne = talents.slice(0, 3);
 
   return (
     <Container>
       <Box sx={{ margin: '20px 20px 20px 20px' }}>
         <Grid container spacing={2}>
           <Grid item xs={8}>
-            <TalentTree talents={talents}/>
+            <TalentTree talents={talentTreeOne} activeTalents={activeTalents} />
           </Grid>
           <Grid item xs={4}>
             <Counter currentPoints={3} totalPoints={talentPoints} />
